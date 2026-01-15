@@ -1,0 +1,24 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        int n=nums.length;
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        for(int num:nums){
+            if(hs.containsKey(num)){
+                hs.put(num,hs.get(num)+1);
+            }
+            else{
+                hs.put(num,1);
+            }
+        }
+        for(Map.Entry<Integer,Integer> entry :hs.entrySet()){
+            int key=entry.getKey();
+            int value=entry.getValue();
+            if(value>n/2){
+                return key;
+            }
+        }
+        return -1;
+      
+       
+    }
+}
