@@ -1,0 +1,28 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        List<Integer> ans=new ArrayList<>();
+        int n=nums.length;
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        // find the frequency of each elemnet 
+        for(int num:nums){
+            if(hs.containsKey(num)){
+                hs.put(num,hs.get(num)+1);
+            }
+            // count initaillay as 1 
+            else{
+                hs.put(num,1);
+            }
+        }
+        // now add the elemts to the list if freq>n/3
+        for(Map.Entry<Integer,Integer> entry:hs.entrySet()){
+            int key=entry.getKey();
+            int value=entry.getValue();
+            if(value>n/3){
+                ans.add(key);
+            }
+        }
+        Collections.sort(ans);
+        return ans;
+        
+    }
+}
